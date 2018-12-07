@@ -1,6 +1,6 @@
 package com.softwarelma.ews.ejb;
 
-public interface IEjbEws {
+public interface EwsEjbInterface {
 
     public String getText();
 

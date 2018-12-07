@@ -13,16 +13,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 @Stateless
-@EJB(beanInterface = EjbEws.class, name = "EjbEws")
+@EJB(beanInterface = EwsEjb.class, name = "EjbEws")
 @LocalBean
-public class EjbEws implements IEjbEws {
+public class EwsEjb implements EwsEjbInterface {
 
     // @Inject
     @Produces
     @PersistenceContext(unitName = "nettunoPU")
     private static EntityManager entityManager;
 
-    private Logger logger = Logger.getLogger(EjbEws.class.getName());
+    private Logger logger = Logger.getLogger(EwsEjb.class.getName());
 
     @Override
     public String getText() {

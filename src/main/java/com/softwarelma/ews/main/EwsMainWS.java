@@ -9,15 +9,15 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.naming.InitialContext;
 
-import com.softwarelma.ews.ejb.EjbEws;
-import com.softwarelma.ews.ejb.IEjbEws;
+import com.softwarelma.ews.ejb.EwsEjb;
+import com.softwarelma.ews.ejb.EwsEjbInterface;
 
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class EwsMainWS {
 
     private transient Logger logger = Logger.getLogger(EwsMainWS.class.getName());
-    private IEjbEws ejbEws;
+    private EwsEjbInterface ejbEws;
 
     public EwsMainWS() {
         this.init();
@@ -37,7 +37,7 @@ public class EwsMainWS {
             InitialContext ctx = new InitialContext();
             // this.ejbEws = (EjbEws) ctx.lookup("java:global/ews/EjbEws!com.softwarelma.ews.ejb.EjbEws");
             // this.ejbEws = (EjbEws) ctx.lookup("java:app/ews/EjbEws!com.softwarelma.ews.ejb.EjbEws");
-            this.ejbEws = (EjbEws) ctx.lookup("java:module/EjbEws!com.softwarelma.ews.ejb.EjbEws");
+            this.ejbEws = (EwsEjb) ctx.lookup("java:module/EjbEws!com.softwarelma.ews.ejb.EjbEws");
 
             // String appName = "";// + "/";
             // String moduleName = "ews2" + "/";
