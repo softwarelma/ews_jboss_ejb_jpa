@@ -15,7 +15,7 @@
     <packaging>war</packaging>
     <version>${com.softwarelma.ews.version}</version>
     <name>ews_jboss_ejb_jpa</name>
-    <description>Elma Web Service - JBoss, EJB, JPA</description>
+    <description>Elma Web Service - Maven, Eclipse, JAX-WS (SOAP), JBoss, EJB, JPA</description>
 
     <dependencies>
         <dependency>
