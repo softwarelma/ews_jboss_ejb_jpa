@@ -3,6 +3,7 @@ package com.softwarelma.ews.main;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.jws.HandlerChain;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -14,10 +15,11 @@ import com.softwarelma.ews.ejb.EwsEjbInterface;
 
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
+@HandlerChain(file = "handler-chain.xml")
 public class EwsMainWS {
 
     private transient Logger logger = Logger.getLogger(EwsMainWS.class.getName());
-    private EwsEjbInterface ejbEws;
+    private EwsEjbInterface ewsEjb;
 
     public EwsMainWS() {
         this.init();
@@ -35,17 +37,17 @@ public class EwsMainWS {
     private void init() {
         try {
             InitialContext ctx = new InitialContext();
-            // this.ejbEws = (EjbEws) ctx.lookup("java:global/ews/EjbEws!com.softwarelma.ews.ejb.EjbEws");
-            // this.ejbEws = (EjbEws) ctx.lookup("java:app/ews/EjbEws!com.softwarelma.ews.ejb.EjbEws");
-            this.ejbEws = (EwsEjb) ctx.lookup("java:module/EjbEws!com.softwarelma.ews.ejb.EjbEws");
+            // this.ewsEjb = (EwsEjb) ctx.lookup("java:global/ews/EjbEws!com.softwarelma.ews.ejb.EwsEjb");
+            // this.ewsEjb = (EwsEjb) ctx.lookup("java:app/ews/EjbEws!com.softwarelma.ews.ejb.EwsEjb");
+            this.ewsEjb = (EwsEjb) ctx.lookup("java:module/EwsEjb!com.softwarelma.ews.ejb.EwsEjb");
 
             // String appName = "";// + "/";
             // String moduleName = "ews2" + "/";
             // String distinctName = "";// + "/";
-            // String beanName = "EjbEws" + "/";
-            // String viewClassName = IEjbEws.class.getName();
+            // String beanName = "EwsEjb" + "/";
+            // String viewClassName = EwsEjbInterface.class.getName();
 
-            // this.ejbEws = (IEjbEws) ctx
+            // this.ewsEjb = (EwsEjbInterface) ctx
             // .lookup("ejb:" + appName + moduleName + distinctName + beanName + "!" + viewClassName);
         } catch (Exception e) {
             this.logger.log(Level.SEVERE, "\tinit. Message: " + e.getMessage(), e);
@@ -57,7 +59,7 @@ public class EwsMainWS {
         try {
             this.logger.info("sayHello - inizio");
             this.logger.info("\tname: " + name);
-            this.logger.info("\ttext: " + this.ejbEws.getText());
+            this.logger.info("\ttext: " + this.ewsEjb.getText());
             if (name == null)
                 return "Hello";
             this.logger.info("sayHello - fine");

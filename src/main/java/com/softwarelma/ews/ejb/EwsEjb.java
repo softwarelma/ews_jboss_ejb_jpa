@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 @Stateless
-@EJB(beanInterface = EwsEjb.class, name = "EjbEws")
+@EJB(beanInterface = EwsEjb.class, name = "EwsEjb")
 @LocalBean
 public class EwsEjb implements EwsEjbInterface {
 
